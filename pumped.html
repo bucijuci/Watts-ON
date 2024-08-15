@@ -12,9 +12,9 @@
     </div>
     <div id="sliders">
         <div>
-            <label for="mass">Water volume (GL)*: </label>
-            <input type="range" min="0" max="10" value="5" class="slider" id="mass">
-            <span id="massOutput">50 units</span>
+            <label for="volume">Water volume (GL)*: </label>
+            <input type="range" min="0" max="10" value="5" class="slider" id="volume">
+            <span id="volumeOutput">50 units</span>
         </div>
         <div id="elev">
             <div>
@@ -26,10 +26,16 @@
                 <p>OR</p>
                 <button id="gps">Enter coordinates</button>
                 <form id="coordForm" style="display: none;">
-                    <label for="latitude">Latitude:</label><br>
-                    <input type="text" id="latitude" name="latitude"><br>
-                    <label for="longitude">Longitude:</label><br>
-                    <input type="text" id="longitude" name="longitude"><br>
+                    <p>Upper reservoir</p>
+                    <label for="latitude1">Latitude:</label><br>
+                    <input type="text" id="latitude1" name="latitude1"><br>
+                    <label for="longitude1">Longitude:</label><br>
+                    <input type="text" id="longitude1" name="longitude1"><br>
+                    <p>Lower reservoir</p>
+                    <label for="latitude2">Latitude:</label><br>
+                    <input type="text" id="latitude2" name="latitude2"><br>
+                    <label for="longitude2">Longitude:</label><br>
+                    <input type="text" id="longitude2" name="longitude2"><br>
                 </form>
             </div>    
         </div>

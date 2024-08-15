@@ -44,7 +44,7 @@ input[type=range] {
 }
 
 /* Chrome */
-input[type=range]#mass::-webkit-slider-thumb {
+input[type=range]#volume::-webkit-slider-thumb {
     -webkit-appearance: none;
     background: teal;
     width: 20px;
@@ -61,7 +61,7 @@ input[type=range]#elevation::-webkit-slider-thumb {
 }
 
 /* Firefox */
-input[type=range]#mass::-moz-range-thumb {
+input[type=range]#volume::-moz-range-thumb {
     background: teal;
     width: 20px;
     height: 20px;
@@ -76,7 +76,7 @@ input[type=range]#elevation::-moz-range-thumb {
 }
 
 /* IE */
-input[type=range]#mass::-ms-thumb {
+input[type=range]#volume::-ms-thumb {
     background: teal;
     width: 20px;
     height: 20px;

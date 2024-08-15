@@ -1,6 +1,6 @@
 window.onload = function() {
-  var slider1 = document.getElementById("mass");
-  var output1 = document.getElementById("massOutput");
+  var slider1 = document.getElementById("volume");
+  var output1 = document.getElementById("volumeOutput");
   output1.innerHTML = slider1.value; // Display the default slider value
 
   var slider2 = document.getElementById("elevation");
@@ -23,11 +23,11 @@ window.onload = function() {
   function updateResult() {
       var calculation = Number(slider1.value) * 0.85 * 9.8 * Number(slider2.value) * 0.894427191 * 0.277777778 /1000; // Replace with your calculation
       result.textContent = calculation.toFixed(2);
-  }
+  } 
 }
 
 // Select the range input
-var range = document.querySelector('#mass');
+var range = document.querySelector('#volume');
 
 // Listen for changes to the input's value
 range.addEventListener('input', function() {
@@ -63,24 +63,5 @@ document.getElementById('gps').addEventListener('click', function() {
   document.getElementById('coordForm').style.display = 'block';
 });
 
-// Get the slider and the p element
-var result = document.getElementById("result").querySelector("p");
 
-// Update the result when the slider value changes
-slider.oninput = function() {
-    var calculation = this.value * 2; // Replace with your calculation
-    result.textContent = calculation;
-}
 
-document.getElementById('reset').addEventListener('click', function() {
-  // Reset the slider values
-  slider1.value = 5; // Replace with your default value
-  slider2.value = 500; // Replace with your default value
-
-  // Update the output elements
-  output1.innerHTML = slider1.value;
-  output2.innerHTML = slider2.value;
-
-  // Clear the result
-  result.textContent = '.';
-});

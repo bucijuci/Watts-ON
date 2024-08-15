@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1{
+    margin-top: 50px;
+    text-align: center;
+    font-weight: 600;
+    color: rgb(28, 219, 203);
+}
+
+h2 {
+    margin-top: 50px;
+    text-align: center;
+    font-weight: 500;
+    color: rgb(28, 219, 203);
+}
+
+p {
+    text-align: center;
+    font-weight: 300;
+    font-size: 18px;
+    color: rgb(17, 172, 159);
+}
+
+#sliders {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    color: rgb(17, 172, 159);
+}
+
+#sliders label, #sliders span {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* General styles for all browsers */
+input[type=range] {
+    -webkit-appearance: none; /* Required to apply custom styles in Webkit browsers */
+    width: 100%; /* Specific width is required for Firefox. */
+    background: linear-gradient(to right, teal 0%, teal 0%, #ccc 0%, #ccc 100%);
+}
+
+/* Chrome */
+input[type=range]#mass::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: teal;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+input[type=range]#elevation::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: orange;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+/* Firefox */
+input[type=range]#mass::-moz-range-thumb {
+    background: teal;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+input[type=range]#elevation::-moz-range-thumb {
+    background: orange;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+/* IE */
+input[type=range]#mass::-ms-thumb {
+    background: teal;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+input[type=range]#elevation::-ms-thumb {
+    background: orange;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+#elev {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#or {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#or p {
+    margin-right: 20px;
+}
+
+#gps {
+    margin-left: 20px;
+    justify-content: end;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border-color: teal;
+    box-shadow: 0px 0px 10px rgba(52, 53, 53, 0.5);
+}
+
+#coordform {
+    margin-top: 20px;
+}
+
+h3 {
+    text-align: center;
+    color: rgb(17, 172, 159);
+}
+
+#result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#result p {
+    position: relative;
+    text-align: center;
+    font-weight: 500;
+    font-size: 25px;
+    color: rgb(17, 172, 159);
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.8); /* semi-transparent white background */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+

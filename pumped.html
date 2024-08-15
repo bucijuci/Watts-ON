@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Watts-ON PSH Calculator</title>
+    <link rel="stylesheet" type="text/css" href="pumped.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Watts-ON</h1>
+        <h2>Pumped Storage Hydropower (PSH) Energy Storage Calculator</h2>
+        <p>The aim of this tool is to provide an estimate of the energy storage capacity of a planned closed-loop PSH facility.</p>
+    </div>
+    <div id="sliders">
+        <div>
+            <label for="mass">Water volume (GL)*: </label>
+            <input type="range" min="0" max="10" value="5" class="slider" id="mass">
+            <span id="massOutput">50 units</span>
+        </div>
+        <div id="elev">
+            <div>
+                <label for="elevation">Change of Elevation (m): </label>
+                <input type="range" min="0" max="2000" value="500" class="slider" id="elevation">
+                <span id="elevationOutput">50 units</span>
+            </div>
+            <div id="or">
+                <p>OR</p>
+                <button id="gps">Enter coordinates</button>
+                <form id="coordForm" style="display: none;">
+                    <label for="latitude">Latitude:</label><br>
+                    <input type="text" id="latitude" name="latitude"><br>
+                    <label for="longitude">Longitude:</label><br>
+                    <input type="text" id="longitude" name="longitude"><br>
+                </form>
+            </div>    
+        </div>
+    </div>
+    <div>
+        <h3>Estimated Energy Storage Capacity (GWh):</h3>
+        <div id="result" style="background-image: url('house.jpg');">
+            <p>.</p>
+        </div>
+    </div>
+    <div>
+        <button id="reset">Reset</button>
+    </div>
+    <script src="pumped.js"></script>
+</body>
+</html>

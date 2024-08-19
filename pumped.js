@@ -63,5 +63,85 @@ document.getElementById('gps').addEventListener('click', function() {
   document.getElementById('coordForm').style.display = 'block';
 });
 
+// Handle form submission for coordinate-based elevation change calculation
+document.getElementById('coordForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  var lat1 = parseFloat(document.getElementById('latitude1').value);
+  var lon1 = parseFloat(document.getElementById('longitude1').value);
+  var lat2 = parseFloat(document.getElementById('latitude2').value);
+  var lon2 = parseFloat(document.getElementById('longitude2').value);
 
+  calculateElevationChange(lat1, lon1, lat2, lon2);
+});
 
+function calculateElevationChange(lat1, lon1, lat2, lon2) {
+  // Check distance between points
+  var distance = haversine(lat1, lon1, lat2, lon2);
+  
+  if (distance < 600) {
+      // Fetch elevations for the two points
+      Promise.all([
+          getElevation(lat1, lon1),
+          getElevation(lat2, lon2)
+      ]).then(function(elevations) {
+          if (elevations[0] !== null && elevations[1] !== null) {
+              var elevationDiff = Math.abs(elevations[1] - elevations[0]);
+              output2.innerHTML = elevationDiff; // Update elevation change display
+              slider2.value = elevationDiff; // Set slider to elevation difference
+              updateResult(); // Recalculate result with updated elevation difference
+          } else {
+              alert('Unable to retrieve elevation data.');
+          }
+      });
+  } else {
+      alert('Points are more than 600 meters apart.');
+  }
+}
+
+function haversine(lat1, lon1, lat2, lon2) {
+  var R = 6371000; // Radius of the Earth in meters
+  var rad = Math.PI / 180; // Convert degrees to radians
+  var dlat = (lat2 - lat1) * rad;
+  var dlon = (lon2 - lon1) * rad;
+  var a = Math.sin(dlat / 2) * Math.sin(dlat / 2) +
+          Math.cos(lat1 * rad) * Math.cos(lat2 * rad) *
+          Math.sin(dlon / 2) * Math.sin(dlon / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
+
+function getElevation(lat, lon) {
+  return fetch(`https://api.open-elevation.com/api/v1/lookup?locations=${lat},${lon}`)
+      .then(response => response.json())
+      .then(data => {
+          if ('results' in data) {
+              return data.results[0].elevation;
+          } else {
+              return null;
+          }
+      });
+}
+
+// Get the form
+var coordForm = document.getElementById('coordForm');
+
+// Add an event listener for the submit event
+coordForm.addEventListener('submit', function(event) {
+    // Prevent the form from being submitted
+    event.preventDefault();
+
+    // Get the latitude and longitude from the form
+    var lat = document.getElementById('lat').value;
+    var lon = document.getElementById('lon').value;
+
+    // Get the elevation
+    getElevation(lat, lon)
+        .then(elevation => {
+            // Display the elevation
+            console.log('Elevation:', elevation);
+        })
+        .catch(error => {
+            // Handle any errors
+            console.error('Error:', error);
+        });
+});

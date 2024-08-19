@@ -12,16 +12,16 @@ window.onload = function() {
   // Update the current slider value (each time you drag the slider handle)
   slider1.oninput = function() {
       output1.innerHTML = this.value;
-      updateResult();
+      updateResult(slider1.value,slider2.value);
   }
 
   slider2.oninput = function() {
       output2.innerHTML = this.value;
-      updateResult();
+      updateResult(slider1.value,slider2.value);
   }
 
-  function updateResult() {
-      var calculation = Number(slider1.value) * 0.85 * 9.8 * Number(slider2.value) * 0.894427191 * 0.277777778 /1000; // Replace with your calculation
+  function updateResult(slider1, slider2) {
+      var calculation = Number(slider1) * 0.85 * 9.8 * Number(slider2) * 0.894427191 * 0.277777778 /1000; // Replace with your calculation
       result.textContent = calculation.toFixed(2);
   } 
 }
@@ -74,7 +74,7 @@ document.getElementById('coordForm').addEventListener('submit', function(event) 
   calculateElevationChange(lat1, lon1, lat2, lon2);
 });
 
-function calculateElevationChange(lat1, lon1, lat2, lon2) {
+function calculateElevationChange(lat1, lon1, lat2, lon2,slider1.value,slider2.value) {
   // Check distance between points
   var distance = haversine(lat1, lon1, lat2, lon2);
   
@@ -86,9 +86,9 @@ function calculateElevationChange(lat1, lon1, lat2, lon2) {
       ]).then(function(elevations) {
           if (elevations[0] !== null && elevations[1] !== null) {
               var elevationDiff = Math.abs(elevations[1] - elevations[0]);
-              output2.innerHTML = elevationDiff; // Update elevation change display
-              slider2.value = elevationDiff; // Set slider to elevation difference
-              updateResult(); // Recalculate result with updated elevation difference
+              // output2.innerHTML = elevationDiff; // Update elevation change display
+              // slider2.value = elevationDiff; // Set slider to elevation difference
+              updateResult(slider1.value,elevationDiff); // Recalculate result with updated elevation difference
           } else {
               alert('Unable to retrieve elevation data.');
           }

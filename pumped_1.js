@@ -182,10 +182,10 @@ function updateResult() {
     var resultDiv = document.getElementById('result');
 
     // Change the background image based on the result
-    if (calculation > 50) {
-        resultDiv.style.backgroundImage = "url('image2.jpg')"; // Replace with your image URL
-    } else if (calculation > 29) {
-        resultDiv.style.backgroundImage = "url('image3.jpg')"; // Replace with your image URL
+    if (calculation > 73.75) {
+        resultDiv.style.backgroundImage = "url('city.jpg')"; // Replace with your image URL
+    } else if (calculation > 0.0725) {
+        resultDiv.style.backgroundImage = "url('town.jpg')"; // Replace with your image URL
     } else {
         resultDiv.style.backgroundImage = "url('house.jpg')"; // Replace with your image URL
     }

@@ -152,8 +152,8 @@ var coordForm = document.getElementById('coordForm');
 // Assign the function to the onclick property
 resetButton.onclick = function() {
     // Reset the slider values
-    slider1.value = 5; // Replace with your default value
-    slider2.value = 500; // Replace with your default value
+    slider1.value = 0; // Replace with your default value
+    slider2.value = 0; // Replace with your default value
 
     // Update the slider positions
     slider1.dispatchEvent(new Event('input'));
@@ -172,6 +172,7 @@ resetButton.onclick = function() {
     // Hide the form and show the "Enter Coordinates" button
     coordForm.style.display = 'none';
     gpsButton.style.display = 'block';
+
 }
 
 function updateResult() {
@@ -184,9 +185,9 @@ function updateResult() {
     // Change the background image based on the result
     if (calculation > 73.75) {
         resultDiv.style.backgroundImage = "url('city.jpg')"; // Replace with your image URL
-    } else if (calculation > 0.0725) {
+    } else if (calculation >= 0.0725) {
         resultDiv.style.backgroundImage = "url('town.jpg')"; // Replace with your image URL
-    } else {
+    } else if (calculation < 0.0725) {
         resultDiv.style.backgroundImage = "url('house.jpg')"; // Replace with your image URL
     }
 }
